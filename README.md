@@ -65,6 +65,9 @@ Your goal is to query the geolocation event data and provide an interesting anal
 * Likelihood of customers visiting one retailer visiting others (e.g. Customers who visit Target are 30% more likely to visit Walgreens)
 * Identify "hot" shopping date/times across all users and per retailer
 * Distribution of the number of stores a user visits in given time period
+* Feel free to come up with your own!
+
+Provide repeatable code to generate results. Optionally, provide appropriate visualization.
 
 
 Gems/Frameworks Already Included
