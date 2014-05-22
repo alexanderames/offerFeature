@@ -52,13 +52,19 @@ This application uses SQLite with ActiveRecord.
 
 The tables given to you are stored in the .seed.csv files, and are loaded to your local sqlite database by the command ```rake db:seed```
 
-The database consists of sample data for 3 tables - retailers, stores and events. These are sample geolocation events from Ibotta.  The associated basic Rails models are included in the RoR project
+If you want to use another database (MySQL), you will need to [configure databases.yml](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database) and then load the data there.
+
+The database consists of sample data for 4 tables - customers, retailers, stores and events. Events are sample geolocation events for our customers (e.g. Enter geofence for a store location). Note that the stores and events are bounded by roughly 30 miles around downtown Denver. Events are from roughly a 3 week timeframe. The associated basic Rails models are included in the RoR project. 
 
 
 The Project
 ---
-
-Your goal is to use the geolocation event data to produce a heatmap, histogram over time, or some other representation of the location data.
+Your goal is to query the geolocation event data and provide an interesting analysis. Some ideas:
+* Heatmap of store visits
+* Distribution of distance from Customer location (lat/long) to Stores they visit using events
+* Likelihood of customers visiting one retailer visiting others (e.g. Customers who visit Target are 30% more likely to visit Walgreens)
+* Identify "hot" shopping date/times across all users and per retailer
+* Distribution of the number of stores a user visits in given time period
 
 
 Gems/Frameworks Already Included
