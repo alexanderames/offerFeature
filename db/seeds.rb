@@ -30,6 +30,11 @@ CSV.foreach(Rails.root.join('db','stores.seed.csv').to_s, headers: true) do |row
   Store.create!(row.to_hash)
 end
 
+Customer.delete_all
+CSV.foreach(Rails.root.join('db','customers.seed.csv').to_s, headers: true) do |row|
+  Customer.create!(row.to_hash)
+end
+
 Event.delete_all
 CSV.foreach(Rails.root.join('db','events.seed.csv').to_s, headers: true) do |row|
   Event.create!(row.to_hash)

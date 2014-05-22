@@ -31,6 +31,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-rescue'
