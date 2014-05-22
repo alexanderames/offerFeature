@@ -67,7 +67,7 @@ Your goal is to query the geolocation event data and provide an interesting anal
 * Distribution of the number of stores a user visits in given time period
 * Feel free to come up with your own!
 
-Provide repeatable code to generate results. Optionally, provide appropriate visualization.
+Provide repeatable code to generate results. Results should be viewable in webpage generated in Rails. Optionally, provide graphical visualizations for the data. Feel free to use third party charting libraries or d3.js.
 
 
 Gems/Frameworks Already Included
