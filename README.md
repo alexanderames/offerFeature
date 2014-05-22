@@ -16,27 +16,29 @@ Here's a quick install procedure for OSX Mavericks:
 1. Ensure XCode and Command Line Tools are installed
 2. Install [brew](http://brew.sh/)
 3. Install the following brew packages
-```
-#!sh
-brew install git node pcre rbenv ruby-build
-```
+
+  ```sh
+  brew install git node pcre rbenv ruby-build
+  ```
+  
 4. Ensure your rbenv profile is setup per the instructions printed during brew install, and possibly restart your terminal
 5. cd to the project root directory (where Gemfile is) and setup ruby
-```
-#!sh
-cd [project_directory]
-rbenv install 2.1.2
-rbenv rehash
-gem install bundler
-```
+
+  ```sh
+  cd [project_directory]
+  rbenv install 2.1.2
+  rbenv rehash
+  gem install bundler
+  ```
+  
 6. initialize the application
-```
-#!sh
-bundle install
-rake db:migrate
-rake db:test:prepare
-rake db:seed
-```
+
+  ```sh
+  bundle install
+  rake db:migrate
+  rake db:test:prepare
+  rake db:seed
+  ```
 
 Common rails commands:
 * ```guard``` automatically runs the rails server as well as runs tests when files change
