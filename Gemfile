@@ -1,18 +1,24 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
-gem 'rails', '3.2.16'
+ruby '2.1.2'
+
+gem 'rails', '4.1.1'
 gem 'sqlite3'
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'sass-rails', '~> 4.0.3'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'bootstrap-sass', '>= 3.0.0.0'
+gem 'turbolinks'
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'spring',        group: :development
+gem 'bootstrap-sass'
+gem 'figaro', :github=>"laserlemon/figaro"
 gem 'haml-rails'
+gem 'simple_form'
+
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
@@ -22,15 +28,19 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
-  gem 'pry-rails'
-  gem 'pry-plus'
 end
+
 group :development, :test do
-  gem 'awesome_print'
   gem 'factory_girl_rails'
-  gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'rspec-rails', '>= 3.0.0.beta2'
 end
+
 group :test do
-  gem 'database_cleaner', '1.0.1'
-  gem 'email_spec'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'faker'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
