@@ -16,6 +16,7 @@ Provide repeatable code to generate results. Results should be viewable on a web
 
 If you feel more comfortable working on this project together in a language/framework other than Ruby on Rails feel free to use that. You'll need to load the seed data in the db directory into your database of choice and make sure to provide instructions on how to run the project on another machine.
 
+
 Ruby on Rails Setup
 ---
 
@@ -71,12 +72,20 @@ The tables given to you are stored in the .seed.csv files, and are loaded to you
 
 If you want to use another database (MySQL), you will need to [configure databases.yml](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database) and then load the data there.
 
-The database consists of sample data for 4 tables - customers, retailers, stores and events. Events are sample geolocation events for our customers (e.g. Enter geofence for a store location). Note that the stores and events are bounded by roughly 30 miles around downtown Denver. Events are from roughly a 3 week timeframe. The associated basic Rails models are included in the RoR project. 
+The database consists of sample data for 4 tables - customers, retailers, stores and events. The associated basic Rails models are included in the RoR project. A few notes:
+* Events are sample geolocation events for our customers (e.g. Enter geofence for a store location). ```event_at``` is the timestamp of when the geofence event was triggered on the mobile device. ```insert_dt``` is the timestamp of when the data was inserted into the database and can be ignored.
+* Stores and events are bounded by roughly 30 miles around downtown Denver and are from roughly a 3 week timeframe. 
+* Lat/long on customers is the latitude and longitude of their home zip code.
+* You may ignore the offers and tasks data for the purposes of this project.
 
 
-Gems/Frameworks Already Included
+Gems/Frameworks that are included but not mandatory to use
 ---
 * Template Engine: Haml or ERB NOTE: Haml is not required so feel free to just use standard ERB templates.
 * Testing Framework: RSpec and Factory Girl
 * Front-end Framework: Twitter Bootstrap 3.0 (Sass, Javascript)
 * Continuous Testing: Guard and Spring
+
+Deliverable
+---
+Please provide the code for the assignment either in a private repository (GitHhub or Bitbucket) or as a zip file. If you decide to put the project on a public server (e.g. Heroku) send over a link to that as well.
