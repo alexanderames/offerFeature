@@ -2,9 +2,9 @@ Ibotta Dev Project
 =========
 
 
-The Project
+# The Project
 ---
-Follow the setup instructions below and seed the database with the geolocation information. Then complete the following tasks:
+Follow the Ruby on Rails Setup instructions below and seed the database with the geolocation information. Then complete the following tasks:
 
 __Task 1__ Implement JSON API endpoints to view seed data for the following scenarios.
 
@@ -28,10 +28,10 @@ __Task 2__ Add a new table for receipts. The table should have the following inf
 __Task 3__ Implement an API to create a new receipt
 
 
-__Task 4___ Include test/specs for API.
+__Task 4__ Include test/specs for API.
 
 
-Ruby on Rails Setup
+# Ruby on Rails Setup
 ---
 
 This application requires:
@@ -76,7 +76,11 @@ Common rails commands:
 * ```rails console``` an interactive ruby console including the rails environment
 * ```rails db``` an interactive database console
 
-Database
+Gems/Frameworks that are included but not mandatory to use:
+* Testing Framework: RSpec and Factory Girl
+* Continuous Testing: Guard and Spring
+
+# Database
 ---
 
 This application uses SQLite with ActiveRecord.
@@ -91,11 +95,7 @@ The database consists of sample data for 4 tables - customers, retailers, stores
 * Lat/long on customers is the latitude and longitude of their home zip code.
 * You may ignore the offers and tasks data for the purposes of this project.
 
-Gems/Frameworks that are included but not mandatory to use
----
-* Testing Framework: RSpec and Factory Girl
-* Continuous Testing: Guard and Spring
 
-Deliverable
+# Deliverable
 ---
 Please provide the code for the assignment either in a private repository (GitHhub or Bitbucket) or as a zip file.
