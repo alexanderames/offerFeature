@@ -14,8 +14,8 @@ __Task 1__ Implement JSON API endpoints to view seed data for the following scen
     GET /events.json?near=39.69,-104.94&radius=5
     # Returns all events within a 5 mile radius
 
-    GET /events.json?near=39.69,-104.94&radius=5&retailer=3
-    # API endpoint should be able to take any combination of GET params.
+    GET /events.json?retailer=3&day=05132014
+    # Returns all events for a retailer on a given day
 
 __Task 2__ Add a new table for receipts. The table should have the following information:
  * Retailer
