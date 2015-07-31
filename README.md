@@ -6,7 +6,7 @@ Ibotta Dev Project
 ---
 Follow the Ruby on Rails Setup instructions below and seed the database with the geolocation information. Then complete the following tasks. Treat the code as if it were going to production.
 
-__Task 1__ Implement JSON API endpoints to view seed data for one or more of the following scenarios.
+__Task 1__ Implement JSON API endpoints to return seed data for one or more of the following scenarios.
 
     # Input: Retailer ID
     # Output: All events for a retailer
