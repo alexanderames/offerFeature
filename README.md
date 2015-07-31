@@ -4,21 +4,20 @@ Ibotta Dev Project
 
 # The Project
 ---
-Follow the Ruby on Rails Setup instructions below and seed the database with the geolocation information. Then complete the following tasks:
+Follow the Ruby on Rails Setup instructions below and seed the database with the geolocation information. Then complete the following tasks. Treat the code as if it were going to production.
 
-__Task 1__ Implement JSON API endpoints to view seed data for the following scenarios.
+__Task 1__ Implement JSON API endpoints to view seed data for one or more of the following scenarios.
 
-    GET /events.json?retailer=3
-    # Returns all events for a retailer
+    # Input: Retailer ID
+    # Output: All events for a retailer
 
-    GET /events.json?near=39.69,-104.94&radius=5
-    # Returns all events within a 5 mile radius
+    # Input: latitude, longitude, radius
+    # Output: All events within a radius
 
-    GET /events.json?retailer=3&day=05132014
-    # Returns all events for a retailer on a given day
+    # Input: Retailer ID, Date
+    # Output: All events for a retailer on a given day
 
 __Task 2__ Add a new table for receipts. The table should have the following information:
- * Retailer
  * Store
  * Customer
  * Total Amount
