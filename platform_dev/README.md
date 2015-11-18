@@ -32,4 +32,4 @@ Treat your code as if it will be used in production to deliver insights to users
 
 # Deliverable
 ---
-Please provide the code for the assignment either in a private repository (GitHhub or Bitbucket) or as a zip file. If you have a deliverable that can be deployed on the web please provide a link.
+Please provide the code for the assignment either in a private repository (GitHub or Bitbucket) or as a zip file. If you have a deliverable that can be deployed on the web please provide a link.
