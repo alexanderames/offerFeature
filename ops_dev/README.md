@@ -1,4 +1,4 @@
-# Ibotta Dev Project
+# Ibotta DevOps Project
 
 The goal of this project is to produce a repeatable deployment solution for a small webapp.
 
