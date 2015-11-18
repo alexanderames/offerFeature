@@ -11,6 +11,8 @@ The goal of this project is to produce a repeatable deployment solution for a sm
 1. Use a provisioning and deployment technology to create a repeatable deployment environment using Vagrant
   * Puppet, Chef, Ansible, Salt, Rubber, OpsWorks/CodeDeploy are all acceptable examples
   * Instructions for initial install of any tools should be included
+  * Docker use is acceptable, but this project will still need to cover provisioning/deployment and setting up docker 'from scratch' on new machine (images)
+  * pre-built images (Vagrant/AMI/etc) should not be included - this project should cover creating new images.
 1. Add a database layer to the web app
   * Database should be simply used by the web app to show successful run
 1. Add instructions on production deployment
