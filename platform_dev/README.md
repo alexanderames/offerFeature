@@ -6,30 +6,64 @@ Ibotta Dev Project
 
 ---
 
-__Task 1__ Download Denver 311 service request [data](https://s3.amazonaws.com/ibotta-dev-test/311_service_requests.csv.zip) ([original source](http://data.denvergov.org/download/gis/311_service_requests/csv/311_service_requests.csv)). This data set contains events in the City and County of Denver for the previous 12 months.
+The project is to build an API that allows fast searches for [anagrams](https://en.wikipedia.org/wiki/Anagram). `dictionary.txt` is a text file containing every word in the English dictionary. Ingesting the file doesn’t need to be fast, and you can store as much data in memory as you like.
 
-__Task 2__ Explore the data to find interesting patterns or trends. The types of questions you might ask include the following:
+The API you design should respond on the following endpoints as specified.
 
-- Are there seasonal trends to the different types of events?
-- Which types of events are more common in which geographic areas (defined by coordinates or neighborhood)?
-- How long are typical response/resolution times? Do these differ by type of event, geography, or other factors?
+- `POST /words/new.json`: Takes a JSON array of English-language words and adds them to the corpus (data store).
+- `GET /anagrams.json`: Returns a JSON array of English-language words that are anagrams of the word in the query string.
 
-__Task 3__ Provide an interface to assist in exploring the insights you generated. This can take any of the following formats:
+Clients will interact with the API over HTTP, and all data sent and received is expected to be in JSON format
 
-- Web visualization (using, e.g., [d3](http://d3js.org/) or [Shiny](http://shiny.rstudio.com/))
-- API that returns events for specific queries. Example endpoints could return, for example:
-  - All events that fall within a radius
-  - All events for a certain time range
-  - All events of a certain type
-- iPython notebook or other interactive, reproducible script
+Example (assuming the API is being served on localhost port 3000):
 
-Note that our server-side application is written primarily in Ruby, so solutions that use Ruby will be most readable to us. However, that is not required--use a language/framework you are comfortable with so that we can see your strengths as a developer.
+```
+$ curl -i -X POST -d '["read", "dear", "dare"]' http://localhost:3000/words/new.json
+HTTP/1.1 200 OK
+...
 
-For some of these tasks you may find it easier to put the data into a database. We mainly use MySQL but other SQL (or NoSQL) flavors are fine too.
+$ curl -i http://localhost:3000/anagrams.json?word=read
+HTTP/1.1 200 OK
+...
+{
+  anagrams: [
+    "dear",
+    "dare"
+  ]
+}
+```
 
-Treat your code as if it will be used in production to deliver insights to users. Think about readability and maintainability, and consider automated testing of code wherever possible.
+Note that a word is not considered to be its own anagram.
+
+## Tests
+
+We have provided a suite of tests to help as you develop the API. To run the tests you must have Ruby installed ([docs](https://www.ruby-lang.org/en/documentation/installation/)):
+
+```
+ruby anagram_test.rb
+```
+
+If you are running your server somewhere other than localhost port 3000, you can configure the test runner with configuration options described by
+
+```
+ruby anagram_test.rb --help
+```
+
+You are welcome to add additional tests if that helps with your development process.
+
+## Documentation
+
+Extra credit will be given for submissions that provide documentation that is useful to consumers and/or maintainers of the API.
+
+Suggestions for documentation topics include:
+
+- Features you think would be useful to add to the API
+- Implementation details (which data store you used, etc.)
+- Limits on the length of words that can be stored or limits on the number of results that will be returned
+- Any edge cases you find while working on the project.
 
 
 # Deliverable
 ---
-Please provide the code for the assignment either in a private repository (GitHub or Bitbucket) or as a zip file. If you have a deliverable that can be deployed on the web please provide a link.
+
+Please provide the code for the assignment either in a private repository (GitHub or Bitbucket) or as a zip file. If you have a deliverable that is deployed on the web please provide a link, otherwise give us instructions for running it locally.
