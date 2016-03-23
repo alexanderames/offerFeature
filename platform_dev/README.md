@@ -11,24 +11,49 @@ The project is to build an API that allows fast searches for [anagrams](https://
 The API you design should respond on the following endpoints as specified.
 
 - `POST /words/new.json`: Takes a JSON array of English-language words and adds them to the corpus (data store).
-- `GET /anagrams.json`: Returns a JSON array of English-language words that are anagrams of the word in the query string.
+- `GET /words/stats.json`: Returns count of words and average word length
+- `GET /anagrams/:word.json`:
+  - Returns a JSON array of English-language words that are anagrams of the word passed in the URL.
+  - This endpoint should support an optional query param that indicates the maximum number of results to return.
+
 
 Clients will interact with the API over HTTP, and all data sent and received is expected to be in JSON format
 
 Example (assuming the API is being served on localhost port 3000):
 
-```
+```{bash}
+# Adding words to the corpus
 $ curl -i -X POST -d '["read", "dear", "dare"]' http://localhost:3000/words/new.json
 HTTP/1.1 200 OK
 ...
 
-$ curl -i http://localhost:3000/anagrams.json?word=read
+# Corpus statistics
+$ curl -i http://localhost:3000/words/stats.json
+HTTP/1.1 200 OK
+...
+{
+  count: 3,
+  average_length: 4.0
+}
+
+# Fetching anagrams
+$ curl -i http://localhost:3000/anagrams/read.json
 HTTP/1.1 200 OK
 ...
 {
   anagrams: [
     "dear",
     "dare"
+  ]
+}
+
+# Specifying maximum number of anagrams
+$ curl -i http://localhost:3000/anagrams/read.json?max=1
+HTTP/1.1 200 OK
+...
+{
+  anagrams: [
+    "dear"
   ]
 }
 ```
@@ -53,14 +78,15 @@ You are welcome to add additional tests if that helps with your development proc
 
 ## Documentation
 
-Extra credit will be given for submissions that provide documentation that is useful to consumers and/or maintainers of the API.
+Optionally, you can provide documentation that is useful to consumers and/or maintainers of the API.
 
 Suggestions for documentation topics include:
 
 - Features you think would be useful to add to the API
 - Implementation details (which data store you used, etc.)
 - Limits on the length of words that can be stored or limits on the number of results that will be returned
-- Any edge cases you find while working on the project.
+- Any edge cases you find while working on the project
+- Design overview and trade-offs you considered
 
 
 # Deliverable
