@@ -14,6 +14,9 @@ The API you design should respond on the following endpoints as specified.
 - `GET /anagrams/:word.json`:
   - Returns a JSON array of English-language words that are anagrams of the word passed in the URL.
   - This endpoint should support an optional query param that indicates the maximum number of results to return.
+- `DELETE /words/:word.json`: Deletes a single word from the data store.
+- `DELETE /words.json`: Deletes all contents of the data store.
+
 
 **Optional**
 - `GET /words/stats.json`: Returns count of words and min/max/median/average word length
@@ -61,9 +64,20 @@ HTTP/1.1 200 OK
   median: 4,
   average: 4.0
 }
+
+# Delete single word
+$ curl -i -X DELETE http://localhost:3000/words/read.json
+HTTP/1.1 200 OK
+...
+
+# Delete all words
+$ curl -i -X DELETE http://localhost:3000/words.json
+HTTP/1.1 200 OK
+...
 ```
 
 Note that a word is not considered to be its own anagram.
+
 
 ## Tests
 
@@ -82,6 +96,20 @@ ruby anagram_test.rb -- -h
 ```
 
 You are welcome to add additional test cases if that helps with your development process.
+
+## API Client
+
+We have provided an API client in `anagram_client.rb`. This is used in the test suite, and can also be used in development.
+
+To run the client in the Ruby console, use `irb`:
+
+```{ruby}
+$ irb
+> require_relative 'anagram_client'
+> client = AnagramClient.new
+> client.post('/words/new.json', nil, { 'words' => ['read', 'dear', 'dare']})
+> client.get('/anagrams/read.json')
+```
 
 ## Documentation
 

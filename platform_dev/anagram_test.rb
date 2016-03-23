@@ -1,75 +1,24 @@
 #!/usr/bin/env ruby
 
-require 'optparse'
-require 'net/http'
 require 'json'
+require_relative 'anagram_client'
 require 'test/unit'
-
-class AnagramTestHelper
-  def initialize(args)
-    options = parse_opts(args)
-
-    @dictionary = options[:dictionary] || 'dictionary.txt'
-    @host = options[:host] || 'localhost'
-    @port = options[:port] || '3000'
-  end
-
-  def build_uri(path, query=nil)
-    URI::HTTP.new('http', nil, @host, @port, nil, path, nil, query, nil)
-  end
-
-  def post(path, query=nil, body=nil)
-    uri = build_uri(path, query)
-    req = Net::HTTP::Post.new(uri.request_uri, initheader = {'Content-Type' =>'application/json'})
-    req.body = body.to_json
-    http = Net::HTTP.new(uri.host, uri.port)
-    res = http.request(req)
-  end
-
-  def get(path, query=nil)
-    Net::HTTP.get_response(build_uri(path, query))
-  end
-
-  private
-
-  def parse_opts(args)
-    options = {}
-
-    OptionParser.new do |opts|
-      opts.banner = "Usage: ruby anagram_test.rb -- [options]"
-
-      opts.on("-d", "--dictionary INPUT_FILE", "defaults to dictionary.txt") do |d|
-        options[:dictionary] = d
-      end
-
-      opts.on("-n", "--hostname HOSTNAME", "defaults to localhost") do |h|
-        options[:host] = h
-      end
-
-      opts.on("-p", "--port PORT_NUMBER", "defaults to 3000") do |p|
-        options[:port] = p
-      end
-
-      opts.on_tail("-h", "--help", "Show help message") do
-        puts opts
-        exit
-      end
-    end.parse!(args)
-
-    options
-  end
-end
 
 class TestCases < Test::Unit::TestCase
 
   def setup
-    @helper = AnagramTestHelper.new(ARGV)
+    @helper = AnagramClient.new(ARGV)
   end
 
   def test_adding_words
     res = @helper.post('/words/new.json', nil, {"words" => ["read", "dear", "dare"] })
 
     assert_equal(200, res.code, "Unexpected response code")
+  end
+
+  def test_deleting_words
+    pend # delete me
+    # todo
   end
 
   def test_fetching_anagrams
@@ -106,5 +55,15 @@ class TestCases < Test::Unit::TestCase
     body = JSON.parse(res.body)
 
     assert_not_nil(body['anagrams'])
+  end
+
+  def test_stats
+    return
+    # todo
+  end
+
+  def test_delete_and_stats
+    return
+    # todo
   end
 end
