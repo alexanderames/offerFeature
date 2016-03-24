@@ -29,7 +29,7 @@ end
 
 def post_in_batches(array)
   array.each_slice(SLICE_SIZE) do |slice|
-    client.post('/words/new.json', { 'words' => slice })
+    client.post('/words.json', { 'words' => slice })
   end
 end
 
@@ -42,7 +42,7 @@ Benchmark.bigo do |example|
   example.min_size = MIN_SIZE
   example.step_size = STEP_SIZE
 
-  example.report('POST /words/new.json') do |array, size|
+  example.report('POST /words.json') do |array, size|
     post_in_batches(array)
   end
 

@@ -39,10 +39,6 @@ class AnagramClient
     OptionParser.new do |opts|
       opts.banner = "Usage: ruby anagram_test.rb -- [options]"
 
-      opts.on("-d", "--dictionary INPUT_FILE", "defaults to dictionary.txt") do |d|
-        options[:dictionary] = d
-      end
-
       opts.on("-n", "--hostname HOSTNAME", "defaults to localhost") do |h|
         options[:host] = h
       end

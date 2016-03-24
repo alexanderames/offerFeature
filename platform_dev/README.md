@@ -10,7 +10,7 @@ The project is to build an API that allows fast searches for [anagrams](https://
 
 The API you design should respond on the following endpoints as specified.
 
-- `POST /words/new.json`: Takes a JSON array of English-language words and adds them to the corpus (data store).
+- `POST /words.json`: Takes a JSON array of English-language words and adds them to the corpus (data store).
 - `GET /anagrams/:word.json`:
   - Returns a JSON array of English-language words that are anagrams of the word passed in the URL.
   - This endpoint should support an optional query param that indicates the maximum number of results to return.
@@ -30,7 +30,7 @@ Example (assuming the API is being served on localhost port 3000):
 
 ```{bash}
 # Adding words to the corpus
-$ curl -i -X POST -d '{ "words": ["read", "dear", "dare"] }' http://localhost:3000/words/new.json
+$ curl -i -X POST -d '{ "words": ["read", "dear", "dare"] }' http://localhost:3000/words.json
 HTTP/1.1 201 Created
 ...
 
@@ -85,7 +85,7 @@ If you are running your server somewhere other than localhost port 3000, you can
 ruby anagram_test.rb -- -h
 ```
 
-You are welcome to add additional test cases if that helps with your development process.
+You are welcome to add additional test cases if that helps with your development process. The [benchmark-bigo](https://github.com/davy/benchmark-bigo) gem is helpful if you wish to do performance testing on your implementation.
 
 ## API Client
 
@@ -97,7 +97,7 @@ To run the client in the Ruby console, use `irb`:
 $ irb
 > require_relative 'anagram_client'
 > client = AnagramClient.new
-> client.post('/words/new.json', nil, { 'words' => ['read', 'dear', 'dare']})
+> client.post('/words.json', nil, { 'words' => ['read', 'dear', 'dare']})
 > client.get('/anagrams/read.json')
 ```
 
