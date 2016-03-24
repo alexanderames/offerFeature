@@ -13,9 +13,9 @@ require 'zlib'
 # number of words to post at a time
 SLICE_SIZE = 100
 # starting size
-MIN_SIZE   = 10
+MIN_SIZE   = 10_000
 # size between steps
-STEP_SIZE  = 10
+STEP_SIZE  = 10_000
 
 def words
   Zlib::GzipReader.open('dictionary.txt.gz') do |gz|
