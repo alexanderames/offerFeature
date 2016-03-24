@@ -19,7 +19,9 @@ The API you design should respond on the following endpoints as specified.
 
 
 **Optional**
-- `GET /words/stats.json`: Returns count of words and min/max/median/average word length
+- Endpoint that returns a count of words in the corpus and min/max/median/average word length
+- Respect a query param for whether or not to include proper nouns in the list of anagrams
+- Endpoint that identifies words with the most anagrams
 
 
 Clients will interact with the API over HTTP, and all data sent and received is expected to be in JSON format
@@ -29,7 +31,7 @@ Example (assuming the API is being served on localhost port 3000):
 ```{bash}
 # Adding words to the corpus
 $ curl -i -X POST -d '{ "words": ["read", "dear", "dare"] }' http://localhost:3000/words/new.json
-HTTP/1.1 200 OK
+HTTP/1.1 201 Created
 ...
 
 # Fetching anagrams
@@ -53,18 +55,6 @@ HTTP/1.1 200 OK
   ]
 }
 
-# Corpus statistics (optional)
-$ curl -i http://localhost:3000/words/stats.json
-HTTP/1.1 200 OK
-...
-{
-  count: 3,
-  min: 4,
-  max: 4,
-  median: 4,
-  average: 4.0
-}
-
 # Delete single word
 $ curl -i -X DELETE http://localhost:3000/words/read.json
 HTTP/1.1 200 OK
@@ -72,7 +62,7 @@ HTTP/1.1 200 OK
 
 # Delete all words
 $ curl -i -X DELETE http://localhost:3000/words.json
-HTTP/1.1 200 OK
+HTTP/1.1 204 No Content
 ...
 ```
 

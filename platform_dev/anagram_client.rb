@@ -27,6 +27,10 @@ class AnagramClient
     Net::HTTP.get_response(build_uri(path, query))
   end
 
+  def delete(path)
+    Net::HTTP.get_response(build_uri(path))
+  end
+
   private
 
   def parse_opts(args)

@@ -6,26 +6,28 @@ require 'test/unit'
 
 class TestCases < Test::Unit::TestCase
 
+  # runs before each test
   def setup
     @helper = AnagramClient.new(ARGV)
+
+    # add words to the dictionary
+    @helper.post('/words/new.json', nil, {"words" => ["read", "dear", "dare"] })
+  end
+
+  # runs after each test
+  def teardown
+    # delete everything
+    @helper.delete('/words.json')
   end
 
   def test_adding_words
     res = @helper.post('/words/new.json', nil, {"words" => ["read", "dear", "dare"] })
 
-    assert_equal(200, res.code, "Unexpected response code")
-  end
-
-  def test_deleting_words
-    pend # delete me
-    # todo
+    assert_equal(201, res.code, "Unexpected response code")
   end
 
   def test_fetching_anagrams
     pend # delete me
-
-    # add words to the dictionary
-    @helper.post('/words/new.json', nil, {"words" => ["read", "dear", "dare"] })
 
     # fetch anagrams
     res = @helper.get('/anagrams/read.json')
@@ -44,9 +46,6 @@ class TestCases < Test::Unit::TestCase
   def test_fetching_anagrams_with_limit
     pend # delete me
 
-    # add words to the dictionary
-    @helper.post('/words/new.json', nil, {"words" => ["read", "dear", "dare"] })
-
     # fetch anagrams with limit
     res = @helper.get('/anagrams/read.json', 'limit=1')
 
@@ -54,16 +53,80 @@ class TestCases < Test::Unit::TestCase
 
     body = JSON.parse(res.body)
 
-    assert_not_nil(body['anagrams'])
+    assert_equal(1, body['anagrams'].size)
   end
 
-  def test_stats
-    return
-    # todo
+  def test_fetch_for_word_with_no_anagrams
+    pend # delete me
+
+    # fetch anagrams with limit
+    res = @helper.get('/anagrams/zyxwv.json')
+
+    assert_equal(200, res.code, "Unexpected response code")
+
+    body = JSON.parse(res.body)
+
+    assert_equal(0, body['anagrams'].size)
   end
 
-  def test_delete_and_stats
-    return
-    # todo
+  def test_deleting_all_words
+    pend # delete me
+
+    res = @helper.delete('/words.json')
+
+    assert_equal(204, res.code, "Unexpected response code")
+
+    # should fetch an empty body
+    res = @helper.get('/anagrams/read.json')
+
+    assert_equal(200, res.code, "Unexpected response code")
+
+    assert_equal(0, body['anagrams'].size)
+  end
+
+  def test_deleting_all_words_multiple_times
+    pend # delete me
+
+    3.times do
+      res = @helper.delete('/words.json')
+
+      assert_equal(204, res.code, "Unexpected response code")
+    end
+
+    # should fetch an empty body
+    res = @helper.get('/anagrams/read.json', 'limit=1')
+
+    assert_equal(200, res.code, "Unexpected response code")
+
+    body = JSON.parse(res.body)
+
+    assert_equal(0, body['anagrams'].size)
+  end
+
+  def test_deleting_single_word
+    pend # delete me
+
+    # delete the word
+    res = @helper.delete('/words/dear.json')
+
+    assert_equal(200, res.code, "Unexpected response code")
+
+    # expect it not to show up in results
+    res = @helper.get('/anagrams/read.json')
+
+    assert_equal(200, res.code, "Unexpected response code")
+
+    body = JSON.parse(res.body)
+
+    assert_equal(['dear'], body['anagrams'])
+
+    # expect result set for the deleted word to be empty
+    res = @helper.get('/anagrams/dear.json')
+
+    assert_equal(200, res.code, "Unexpected response code")
+
+    body = JSON.parse(res.body)
+
+    assert_equal(0, body['anagrams'].size)
   end
 end
