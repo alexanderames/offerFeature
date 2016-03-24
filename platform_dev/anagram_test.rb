@@ -8,20 +8,20 @@ class TestCases < Test::Unit::TestCase
 
   # runs before each test
   def setup
-    @helper = AnagramClient.new(ARGV)
+    @client = AnagramClient.new(ARGV)
 
     # add words to the dictionary
-    @helper.post('/words/new.json', nil, {"words" => ["read", "dear", "dare"] })
+    @client.post('/words/new.json', nil, {"words" => ["read", "dear", "dare"] })
   end
 
   # runs after each test
   def teardown
     # delete everything
-    @helper.delete('/words.json')
+    @client.delete('/words.json')
   end
 
   def test_adding_words
-    res = @helper.post('/words/new.json', nil, {"words" => ["read", "dear", "dare"] })
+    res = @client.post('/words/new.json', nil, {"words" => ["read", "dear", "dare"] })
 
     assert_equal(201, res.code, "Unexpected response code")
   end
@@ -30,7 +30,7 @@ class TestCases < Test::Unit::TestCase
     pend # delete me
 
     # fetch anagrams
-    res = @helper.get('/anagrams/read.json')
+    res = @client.get('/anagrams/read.json')
 
     assert_equal(200, res.code, "Unexpected response code")
     assert_not_nil(res.body)
@@ -47,7 +47,7 @@ class TestCases < Test::Unit::TestCase
     pend # delete me
 
     # fetch anagrams with limit
-    res = @helper.get('/anagrams/read.json', 'limit=1')
+    res = @client.get('/anagrams/read.json', 'limit=1')
 
     assert_equal(200, res.code, "Unexpected response code")
 
@@ -60,7 +60,7 @@ class TestCases < Test::Unit::TestCase
     pend # delete me
 
     # fetch anagrams with limit
-    res = @helper.get('/anagrams/zyxwv.json')
+    res = @client.get('/anagrams/zyxwv.json')
 
     assert_equal(200, res.code, "Unexpected response code")
 
@@ -72,12 +72,12 @@ class TestCases < Test::Unit::TestCase
   def test_deleting_all_words
     pend # delete me
 
-    res = @helper.delete('/words.json')
+    res = @client.delete('/words.json')
 
     assert_equal(204, res.code, "Unexpected response code")
 
     # should fetch an empty body
-    res = @helper.get('/anagrams/read.json')
+    res = @client.get('/anagrams/read.json')
 
     assert_equal(200, res.code, "Unexpected response code")
 
@@ -88,13 +88,13 @@ class TestCases < Test::Unit::TestCase
     pend # delete me
 
     3.times do
-      res = @helper.delete('/words.json')
+      res = @client.delete('/words.json')
 
       assert_equal(204, res.code, "Unexpected response code")
     end
 
     # should fetch an empty body
-    res = @helper.get('/anagrams/read.json', 'limit=1')
+    res = @client.get('/anagrams/read.json', 'limit=1')
 
     assert_equal(200, res.code, "Unexpected response code")
 
@@ -107,12 +107,12 @@ class TestCases < Test::Unit::TestCase
     pend # delete me
 
     # delete the word
-    res = @helper.delete('/words/dear.json')
+    res = @client.delete('/words/dear.json')
 
     assert_equal(200, res.code, "Unexpected response code")
 
     # expect it not to show up in results
-    res = @helper.get('/anagrams/read.json')
+    res = @client.get('/anagrams/read.json')
 
     assert_equal(200, res.code, "Unexpected response code")
 
@@ -121,7 +121,7 @@ class TestCases < Test::Unit::TestCase
     assert_equal(['dear'], body['anagrams'])
 
     # expect result set for the deleted word to be empty
-    res = @helper.get('/anagrams/dear.json')
+    res = @client.get('/anagrams/dear.json')
 
     assert_equal(200, res.code, "Unexpected response code")
 
