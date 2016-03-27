@@ -29,7 +29,7 @@ end
 
 def post_in_batches(array)
   array.each_slice(SLICE_SIZE) do |slice|
-    client.post('/words.json', { 'words' => slice })
+    client.post('/words.json', { 'words' => slice }.to_json)
   end
 end
 

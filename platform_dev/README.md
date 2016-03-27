@@ -82,7 +82,7 @@ Only the first test will be executed, all the others have been made pending usin
 If you are running your server somewhere other than localhost port 3000, you can configure the test runner with configuration options described by
 
 ```{bash}
-ruby anagram_test.rb -- -h
+ruby anagram_test.rb -h
 ```
 
 You are welcome to add additional test cases if that helps with your development process. The [benchmark-bigo](https://github.com/davy/benchmark-bigo) gem is helpful if you wish to do performance testing on your implementation.
