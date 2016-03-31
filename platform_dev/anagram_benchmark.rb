@@ -64,10 +64,9 @@ Benchmark.bigo do |example|
   example.step_size = STEP_SIZE
 
   example.report('GET /anagrams/:word.json') do |array, size|
-    # get anagrams for every word
-    array.each do |word|
-      @client.get("/anagrams/#{word}.json")
-    end
+    # get anagrams for a single word (what changes is the size of the corpus)
+    word = array.sample
+    @client.get("/anagrams/#{word}.json")
   end
 
   example.chart! 'chart_anagram_get.html'

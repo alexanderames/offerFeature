@@ -5,13 +5,12 @@ require_relative 'anagram_client'
 require 'test/unit'
 
 # capture ARGV before TestUnit Autorunner clobbers it
-CLIENT = AnagramClient.new(ARGV)
 
 class TestCases < Test::Unit::TestCase
 
   # runs before each test
   def setup
-    @client = CLIENT
+    @client = AnagramClient.new(ARGV)
 
     # add words to the dictionary
     @client.post('/words.json', nil, {"words" => ["read", "dear", "dare"] }) rescue nil

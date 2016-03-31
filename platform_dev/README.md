@@ -22,7 +22,9 @@ The API you design should respond on the following endpoints as specified.
 - Endpoint that returns a count of words in the corpus and min/max/median/average word length
 - Respect a query param for whether or not to include proper nouns in the list of anagrams
 - Endpoint that identifies words with the most anagrams
-
+- Endpoint that takes a set of words and returns whether or not they are all anagrams of each other
+- Endpoint to return all anagram groups of size >= *x*
+- Endpoint to delete a word *and all of its anagrams*
 
 Clients will interact with the API over HTTP, and all data sent and received is expected to be in JSON format
 
