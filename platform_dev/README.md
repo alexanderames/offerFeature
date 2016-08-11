@@ -1,6 +1,47 @@
 Ibotta Dev Project
 =========
 
+# Whats included
+
+---
+
+The project includes all necessary endpoints without the .json extension. Optional endpoints included in the test are:
+
+```
+- Endpoint that returns a count of words in the corpus and min/max/median/average word length
+- Respect a query param for whether or not to include proper nouns in the list of anagrams
+```
+I would have implemented the rest, unfortunately I have to wrap up some client work. To test, I used node version 4.4.7.
+```
+    To run:
+     1) cd api
+     2) npm install
+     3) npm test -> shows all tests
+     4) npm start
+```
+
+### Answers to Suggestions for Documenation Topics:
+- Features you think would be useful to add to the API
+    I believe there are enough features to keep someone preoccupied for a day or two. Most of the work in the test was IO Bound and the computational complexity of problems could easily be reduced by some simple hash, set or aggregate trickery. Overall, I think it's a great test.
+
+- Implementation details (which data store you used, etc.)
+    Because there were no memory requirements given, I simply loaded everything into heap memory/ ram. The dictionary, only being 2mb
+    was too small to write to disk and could easily fit into memory. There were no requirements that the program had to handle more words than allocated heap memory.
+
+- Limits on the length of words that can be stored or limits on the number of results that will be returned
+    The only limits of this program is the default memory allocated by node. There were no limits in the length of words that I added. In practice, you'd want to add reasonable limits.
+
+- Any edge cases you find while working on the project
+    
+
+- Design overview and trade-offs you considered
+    Because this was an IO Bound problem I used node.js. With the single threaded model, you don't have to worry about race conditions when writting to the same object in memory. The only race condition I would expect is if you have 2 writters and readers, where you could write to the word set and immediately read from it and expect a certain result... because the other guy may write to it before you read, you'll get some unexpected.
+
+    A trade off with Node is that you can't do cpu bound operations well, and wouldn't advise doing stats analysis with this system. Only because I aggregated my stats and updated everything as new data came into the system, I simplified the computational complexity for recalculating things like averages to O(1) instead reprocessing the entire word set. The most computationally complex operation for my stats was computing the median, however most words don't go over 12 letters so an expected worst case scenario for computing the median may be 12/2 = 6... not too bad.
+
+
+### Final Notes
+I added some more tests to your ruby script. Everything ought to run localhost:3000 when express runs.
 
 # The Project
 
