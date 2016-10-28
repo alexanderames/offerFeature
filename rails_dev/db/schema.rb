@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,18 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20140522143714) do
 
-  create_table "customers", force: true do |t|
+  create_table "customers", force: :cascade do |t|
     t.string   "customer_id"
     t.string   "zip"
     t.float    "lat"
     t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["customer_id"], name: "index_customers_on_customer_id", unique: true
   end
 
-  add_index "customers", ["customer_id"], name: "index_customers_on_customer_id", unique: true
-
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.integer  "store_id"
     t.string   "customer_id"
     t.float    "lat"
@@ -32,12 +30,11 @@ ActiveRecord::Schema.define(version: 20140522143714) do
     t.datetime "event_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["customer_id"], name: "index_events_on_customer_id"
+    t.index ["store_id"], name: "index_events_on_store_id"
   end
 
-  add_index "events", ["customer_id"], name: "index_events_on_customer_id"
-  add_index "events", ["store_id"], name: "index_events_on_store_id"
-
-  create_table "offers", force: true do |t|
+  create_table "offers", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.text     "terms"
@@ -47,13 +44,13 @@ ActiveRecord::Schema.define(version: 20140522143714) do
     t.datetime "updated_at"
   end
 
-  create_table "retailers", force: true do |t|
+  create_table "retailers", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "stores", force: true do |t|
+  create_table "stores", force: :cascade do |t|
     t.integer  "retailer_id"
     t.string   "address"
     t.string   "city"
@@ -63,11 +60,10 @@ ActiveRecord::Schema.define(version: 20140522143714) do
     t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["retailer_id"], name: "index_stores_on_retailer_id"
   end
 
-  add_index "stores", ["retailer_id"], name: "index_stores_on_retailer_id"
-
-  create_table "tasks", force: true do |t|
+  create_table "tasks", force: :cascade do |t|
     t.integer  "offer_id"
     t.string   "task_type"
     t.float    "amount"
@@ -76,8 +72,7 @@ ActiveRecord::Schema.define(version: 20140522143714) do
     t.string   "thumbnail_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["offer_id"], name: "index_tasks_on_offer_id"
   end
-
-  add_index "tasks", ["offer_id"], name: "index_tasks_on_offer_id"
 
 end

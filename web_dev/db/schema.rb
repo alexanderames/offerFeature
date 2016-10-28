@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20151019194152) do
 
-  create_table "offers", force: true do |t|
+  create_table "offers", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.text     "terms"
@@ -23,20 +22,20 @@ ActiveRecord::Schema.define(version: 20151019194152) do
     t.datetime "updated_at"
   end
 
-  create_table "retailer_offers", force: true do |t|
+  create_table "retailer_offers", force: :cascade do |t|
     t.integer  "retailer_id"
     t.integer  "offer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "retailers", force: true do |t|
+  create_table "retailers", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "tasks", force: true do |t|
+  create_table "tasks", force: :cascade do |t|
     t.integer  "offer_id"
     t.string   "task_type"
     t.float    "amount"
@@ -45,8 +44,7 @@ ActiveRecord::Schema.define(version: 20151019194152) do
     t.string   "thumbnail_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["offer_id"], name: "index_tasks_on_offer_id"
   end
-
-  add_index "tasks", ["offer_id"], name: "index_tasks_on_offer_id"
 
 end

@@ -35,8 +35,8 @@ Ruby on Rails
 
 This application requires:
 
-* Ruby (1.9.3 or above. Currently setup for Ruby 2.1.5)
-* Rails (4.1.1)
+* Ruby (2.3.x)
+* Rails (5)
 
 Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
@@ -47,14 +47,14 @@ Here's a quick install procedure for OSX El Capitan:
 3. Install the following brew packages
 ```
 #!sh
-brew install git node pcre rbenv ruby-build
+brew install git node pcre rbenv ruby-build sqlite3
 ```
 4. Ensure your rbenv profile is setup per the instructions printed during brew install, and possibly restart your terminal
 5. cd to the project root directory (where Gemfile is) and setup ruby
 ```
 #!sh
 cd [project_directory]
-rbenv install 2.1.5
+rbenv install 2.3.1
 rbenv rehash
 gem install bundler
 ```
@@ -68,10 +68,21 @@ rake db:seed
 ```
 
 Common rails commands:
-* ```guard``` automatically runs the rails server as well as runs tests when files change
+* ```bundle exec guard``` automatically runs the rails server as well as runs tests when files change
 * ```rake db:seed``` will always reload the given test data (will take a while)
 * ```rails console``` an interactive ruby console including the rails environment
 * ```rails db``` an interactive database console
+
+Getting a segfault on seed?
+Sorry about that - it's a bug with macOS sierra. Run this to get it fixed:
+
+```sh
+  brew update
+  brew install sqlite3
+  gem pristine sqlite3
+  spring stop
+  rake db:seed
+```
 
 Database Setup
 ---
@@ -92,4 +103,3 @@ Gems/Frameworks Already Included
 * Testing Framework: RSpec and Factory Girl
 * Front-end Framework: Twitter Bootstrap 3.0 (Sass, Javascript)
 * Continuous Testing: Guard and Spring
-
