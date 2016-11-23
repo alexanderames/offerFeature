@@ -3,6 +3,14 @@ Ibotta Data Engineer Take Home Project
 
 
 # The Project
+
+## Preface
+For the purposes of test delivery the data set here is relatively
+small (data from Denver's open data catalog).  You should approach
+this test as though the data were 1000x the actual size and is
+frequently updated by real time events.
+
+
 ####Task 1 
 Download data about [Denver 311 service requests](https://s3.amazonaws.com/ibotta-data-engineer-test/311_service_requests.csv.zip) ([original source](http://data.denvergov.org/download/gis/311_service_requests/csv/311_service_requests.csv)) and [traffic accidents](https://s3.amazonaws.com/ibotta-data-engineer-test/traffic_accidents.csv.zip) ([original source](http://data.denvergov.org/download/gis/traffic_accidents/csv/traffic_accidents.csv)). This data set, which is *not* perfect, contains events in the City and County of Denver for the previous 12 months. Even as the data grows at a high rate, it should be reasonably queryable for the tasks below.
 
