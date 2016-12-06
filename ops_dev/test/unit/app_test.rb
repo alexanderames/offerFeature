@@ -11,7 +11,7 @@ describe 'The app' do
   it 'renders markdown as HTML' do
     get '/'
     assert last_response.ok?
-    assert_match Regexp.new('^<h1>Ibotta DevOps Test</h1>'), last_response.body
+    assert_match Regexp.new('^<h1>Ibotta DevOps Project</h1>'), last_response.body
   end
 
   it 'reads and writes a temporary file' do

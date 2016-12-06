@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 
 describe command("curl -f http://#{ENV['TARGET_HOST']}:#{ENV['TARGET_PORT']}") do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should match(Regexp.new('^<h1>Ibotta DevOps Test</h1>')) }
+  its(:stdout) { should match(Regexp.new('^<h1>Ibotta DevOps Project</h1>')) }
 end
 
 describe command("curl -f http://#{ENV['TARGET_HOST']}:#{ENV['TARGET_PORT']}/tmpfile") do
