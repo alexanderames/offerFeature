@@ -29,6 +29,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_fetching_anagrams
+    pend # delete me
 
     # fetch anagrams
     res = @client.get('/anagrams/read.json')
@@ -45,6 +46,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_fetching_anagrams_with_limit
+    pend # delete me
 
     # fetch anagrams with limit
     res = @client.get('/anagrams/read.json', 'limit=1')
@@ -57,6 +59,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_fetch_for_word_with_no_anagrams
+    pend # delete me
 
     # fetch anagrams with limit
     res = @client.get('/anagrams/zyxwv.json')
@@ -69,6 +72,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_deleting_all_words
+    pend # delete me
 
     res = @client.delete('/words.json')
 
@@ -85,6 +89,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_deleting_all_words_multiple_times
+    pend # delete me
 
     3.times do
       res = @client.delete('/words.json')
@@ -103,6 +108,7 @@ class TestCases < Test::Unit::TestCase
   end
 
   def test_deleting_single_word
+    pend # delete me
 
     # delete the word
     res = @client.delete('/words/dear.json')
@@ -118,64 +124,4 @@ class TestCases < Test::Unit::TestCase
 
     assert_equal(['dare'], body['anagrams'])
   end
-
-  def test_anagram_group_size
-    # read should be biggest result set with 3
-    res = @client.get('/anagrams/groups/size/3')
-
-    assert_equal('200', res.code, "Unexpected response code")
-
-    arr = JSON.parse(res.body)
-
-    assert_equal(1, arr.size)
-
-    anagrams = arr[0]['anagrams']
-
-    assert_equal(3, anagrams.size)
-
-    # should also find when group size is smaller
-    res = @client.get('/anagrams/groups/size/1')
-
-    assert_equal('200', res.code, "Unexpected response code")
-
-    arr = JSON.parse(res.body)
-
-    assert_equal(1, arr.size)
-
-    anagrams = arr[0]['anagrams']
-
-    assert_equal(3, anagrams.size)
-
-  end
-
-  def test_delete_all_anagrams
-    # should delete all 3 words
-    res = @client.get('/anagrams/read.json')
-
-    anagrams = JSON.parse(res.body)
-
-    assert_equal(2, anagrams['anagrams'].size)
-
-    # now delete
-    res = @client.delete('/anagrams/read.json')
-
-    assert_equal('200', res.code, "Unexpected response code")
-
-    # fetch results again and check there are 0
-    res = @client.get('/anagrams/read.json')
-
-    anagrams = JSON.parse(res.body)
-
-    assert_equal(0, anagrams['anagrams'].size)
-  end
-
-  def test_anagram_group_check
-    # should check if the given words are anagrams
-    res = @client.get('/anagrams/groups/isGroup?words=read,dear,dare')
-
-    body = JSON.parse(res.body)
-
-    assert_equal(true, body['isAnagramGroup'])
-  end
-
 end
