@@ -59,7 +59,7 @@ HTTP/1.1 200 OK
 
 # Delete single word
 $ curl -i -X DELETE http://localhost:3000/words/read.json
-HTTP/1.1 200 OK
+HTTP/1.1 204 No Content
 ...
 
 # Delete all words

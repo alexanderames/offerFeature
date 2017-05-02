@@ -113,7 +113,7 @@ class TestCases < Test::Unit::TestCase
     # delete the word
     res = @client.delete('/words/dear.json')
 
-    assert_equal('200', res.code, "Unexpected response code")
+    assert_equal('204', res.code, "Unexpected response code")
 
     # expect it not to show up in results
     res = @client.get('/anagrams/read.json')
