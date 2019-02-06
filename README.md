@@ -8,23 +8,32 @@ database to the browser as JSON and then display the offers in the
 browser as a single page application.
 
 ### Requirements
- * [ ] Build a single page application using a JavaScript frontend framework or library
- * [ ] Pull JSON data from the server
- * [ ] Display offers in a gallery
- * [ ] View an individual offer
- * [ ] Well tested
+ * [ ] Define a JSON API for consumption by the client
+ * [ ] Build a single page application (SPA) using a JavaScript frontend framework or library
+ * [ ] Asynchronously request the data needed for your SPA from your Rails API
+ * [ ] Display all offers in a gallery view
+ * [ ] Display an individual offer in a detail view
+ * [ ] Application is well tested
  * [ ] Provide code in a private git repo (hosted or in an archive)
 
 ### Nice to have
  * [ ] Track offer views
  * [ ] Search for offers
- * [ ] Filter offers in gallery by Retailer
- * [ ] Display Retailer info on offers
+ * [ ] Filter offers in the gallery by retailer
+ * [ ] Display retailer info for an offer
+
+### Documentation
+Consider writing documentation that would be useful to maintainers of your application. Suggestions for documentation topics include:
+
+* How to setup and run your application
+* Implementation details (3rd party modules, build tooling, etc.)
+* Design overview and trade-offs you considered
+* Additional features you think would be useful
+* Edge cases you found while working on the project
 
 ### Notes:
 
  * Image URLs for each offer are in the database.
-
 
 Ruby on Rails
 ---
