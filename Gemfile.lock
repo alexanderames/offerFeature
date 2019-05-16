@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/laserlemon/figaro.git
+  remote: https://github.com/laserlemon/figaro.git
   revision: 8dd678f5075272138acf4b56682b8b1cbcd6ce10
   specs:
     figaro (1.1.1)
