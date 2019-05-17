@@ -34,6 +34,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails', '>= 3.0.0.beta2'
+  gem 'rack-cors'
 end
 
 group :test do
