@@ -16,8 +16,12 @@ gem 'figaro', :github=>"laserlemon/figaro"
 gem 'haml-rails'
 gem 'simple_form'
 gem 'bootsnap', '>= 1.1.0', require: false
+# The ruby implementation of the GraphQL language.
+gem 'graphql'
 
 group :development do
+  # A development utility to test GraphQL queries.
+  gem 'graphiql-rails'
   gem 'better_errors'
   gem 'guard-bundler'
   gem 'guard-rails'
