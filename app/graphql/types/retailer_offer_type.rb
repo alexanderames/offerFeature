@@ -4,8 +4,8 @@ module Types
     field :id, ID, null: false
     field :retailer_id, ID, null: false
     field :offer_id, ID, null: false
-    field :created_at, DateTime, null: false
-    field :updated_at, DateTime, null: false
+    field :created_at, DateTimeType, null: false
+    field :updated_at, DateTimeType, null: false
 
   end
 end

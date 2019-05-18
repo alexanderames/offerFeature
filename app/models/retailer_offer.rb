@@ -2,8 +2,8 @@
 # id: ID
 # retailer_id: ID
 # offer_id: ID
-# created_at: DATETIME
-# updated_at: DATETIME
+# created_at: DateTimeType
+# updated_at: DateTimeType
 
 class RetailerOffer < ActiveRecord::Base
   belongs_to :retailer

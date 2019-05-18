@@ -4,9 +4,9 @@
 # description: STRING
 # terms: STRING
 # image_url: URL
-# expiration: DATETIME
-# created_at: DATETIME
-# updated_at: DATETIME
+# expiration: DateTimeType
+# created_at: DateTimeType
+# updated_at: DateTimeType
 
 class Offer < ActiveRecord::Base
   has_many :retailer_offers

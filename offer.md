@@ -51,7 +51,7 @@ Below are the Requirements listed and the corresponding Implementation I used:
 
 ## Define a JSON API for consumption by the client
 
-I will be using GraphQL because it is a clear concise way to emit JSON data. Before I could do that though I needed to turn this Rails App into an API only application. I did this following [these steps](https://hashrocket.com/blog/posts/how-to-make-rails-5-api-only).
+I will be using GraphQL because it is a clear, concise way to emit JSON data. Before I could do that though I needed to turn this Rails App into an API only application. I did this following [these steps](https://hashrocket.com/blog/posts/how-to-make-rails-5-api-only).
 
 In order to see the JSON schema, run the server and go to <http://localhost:3000/graphiql>.
 
