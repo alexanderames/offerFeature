@@ -1,17 +1,22 @@
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Set up](#set-up)
-	- [Application](#application)
-	- [Database](#database)
+ - [Set up](#set-up)
+
+  - [Application](#application)
+  - [Database](#database)
+
 - [Requirements and Implementation](#requirements-and-implementation)
-	- [Define a JSON API for consumption by the client](#define-a-json-api-for-consumption-by-the-client)
-	- [Build a single page application (SPA) using a JavaScript frontend framework or library](#build-a-single-page-application-spa-using-a-javascript-frontend-framework-or-library)
-	- [Asynchronously request the data needed for your SPA from your Rails API](#asynchronously-request-the-data-needed-for-your-spa-from-your-rails-api)
-	- [Display all offers in a gallery view](#display-all-offers-in-a-gallery-view)
-	- [Display an individual offer in a detail view](#display-an-individual-offer-in-a-detail-view)
-	- [Application is well tested](#application-is-well-tested)
-		- [Initial tests](#initial-tests)
-	- [Provide code in a private git repo (hosted or in an archive)](#provide-code-in-a-private-git-repo-hosted-or-in-an-archive)
+
+  - [Define a JSON API for consumption by the client](#define-a-json-api-for-consumption-by-the-client)
+  - [Build a single page application (SPA) using a JavaScript frontend framework or library](#build-a-single-page-application-spa-using-a-javascript-frontend-framework-or-library)
+  - [Asynchronously request the data needed for your SPA from your Rails API](#asynchronously-request-the-data-needed-for-your-spa-from-your-rails-api)
+  - [Display all offers in a gallery view](#display-all-offers-in-a-gallery-view)
+  - [Display an individual offer in a detail view](#display-an-individual-offer-in-a-detail-view)
+  - [Application is well tested](#application-is-well-tested)
+
+    - [Initial tests](#initial-tests)
+
+  - [Provide code in a private git repo (hosted or in an archive)](#provide-code-in-a-private-git-repo-hosted-or-in-an-archive)
 
 <!-- /TOC -->
 
@@ -47,6 +52,8 @@ Below are the Requirements listed and the corresponding Implementation I used:
 ## Define a JSON API for consumption by the client
 
 I will be using GraphQL because it is a clear concise way to emit JSON data. Before I could do that though I needed to turn this Rails App into an API only application. I did this following [these steps](https://hashrocket.com/blog/posts/how-to-make-rails-5-api-only).
+
+In order to see the JSON schema, run the server and go to <http://localhost:3000/graphiql>.
 
 ## Build a single page application (SPA) using a JavaScript frontend framework or library
 
