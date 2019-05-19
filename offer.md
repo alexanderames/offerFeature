@@ -20,11 +20,11 @@
 
 <!-- /TOC -->
 
- # Overview
+ ===
+
+# Overview
 
 Send the offer data (more details below) from the database to the browser as JSON and then display the offers in the browser as a single page application.
-
-===
 
 # Set up
 
@@ -53,9 +53,13 @@ Below are the Requirements listed and the corresponding Implementation I used:
 
 I will be using GraphQL because it is a clear, concise way to emit JSON data. Before I could do that though I needed to turn this Rails App into an API only application. I did this following [these steps](https://hashrocket.com/blog/posts/how-to-make-rails-5-api-only).
 
-In order to see the JSON schema, run the server and go to <http://localhost:3000/graphiql>.
+In order to see the JSON schema, run the server, go to <http://localhost:3000/graphiql>, and the schema is on the right-hand side.
 
 ## Build a single page application (SPA) using a JavaScript frontend framework or library
+
+### React-Client
+
+I built the frontend with `create-react-app` and stored it in the directory `react-client`.
 
 ## Asynchronously request the data needed for your SPA from your Rails API
 
@@ -70,5 +74,9 @@ Even though this is almost the last requirement, I believe it should be the firs
 ### Initial tests
 
 Initial tests revealed that the rails_helper.rb and Gaurdfile needed to be accounted for, then: `No route matches {:action=>"index", :controller=>"home"}`. This is because routes.rb doesn't have a HomeController represented. I decided not to use that controller so both were deleted.
+
+### Model tests
+
+I flushed out the existing factories with the Faker gem. Then I created model associations in Offers, Retailers, and RetailerOffers spec. I did this using ShouldaMatchers gem.
 
 ## Provide code in a private git repo (hosted or in an archive)
