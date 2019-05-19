@@ -2,7 +2,9 @@ module Types
   class QueryType < Types::BaseObject
 
     # Offer/s.
-    field :offers, [Types::OfferType], null: false
+    field :offers, [Types::OfferType],
+          null: false,
+          function: Resolvers::OffersSearch
 
     def offers
       Offer.all

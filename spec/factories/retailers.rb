@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :retailer do
-    name "MyString"
+    name { Faker::Company.unique.name }
+    created_at { Faker::Date.backward(365) }
   end
 end

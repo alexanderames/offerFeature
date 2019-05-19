@@ -11,4 +11,6 @@
 class Offer < ActiveRecord::Base
   has_many :retailer_offers
   has_many :retailers, through: :retailer_offers
+
+  scope :like, ->(field, value) { where arel_table[field].matches("%#{value}%") }
 end

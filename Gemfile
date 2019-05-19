@@ -18,6 +18,8 @@ gem 'simple_form'
 gem 'bootsnap', '>= 1.1.0', require: false
 # The ruby implementation of the GraphQL language.
 gem 'graphql'
+gem 'search_object', '1.2.0'
+gem 'search_object_graphql', '0.1'
 
 group :development do
   # A development utility to test GraphQL queries.
@@ -42,6 +44,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'faker'

@@ -2,10 +2,10 @@
 
 FactoryBot.define do
   factory :offer do
-    name "MyString"
-    description "MyText"
-    terms "MyText"
-    image_url "MyString"
-    expiration "2014-02-06 11:08:57"
+    name { Faker::Company.unique.name }
+    description { Faker::Company.catch_phrase }
+    terms { Faker::Company.bs }
+    image_url { Faker::Company.logo }
+    expiration { Faker::Date.forward(365) }
   end
 end
