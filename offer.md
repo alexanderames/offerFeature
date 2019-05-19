@@ -59,7 +59,7 @@ In order to see the JSON schema, run the server, go to <http://localhost:3000/gr
 
 ### React-Client
 
-I built the frontend with `create-react-app` and stored it in the directory `react-client`.
+I built the frontend with `create-react-app` and stored it in the directory `react-client`. Then I installed Apollo to link the GraphQL queries with the server.
 
 ## Asynchronously request the data needed for your SPA from your Rails API
 
