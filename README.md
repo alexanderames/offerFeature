@@ -20,9 +20,7 @@
 
 <!-- /TOC -->
 
- ===
-
-# Overview
+ # Overview
 
 Send the offer data (more details below) from the database to the browser as JSON and then display the offers in the browser as a single page application.
 
@@ -43,7 +41,9 @@ This application uses SQLite with ActiveRecord.
 
 The tables given to you are stored in the .seed.csv files, and are loaded to your local SQLite database by the command `rake db:seed`
 
---------------------------------------------------------------------------------
+## Front-end
+
+The front-end is stored [here](https://github.com/alexanderames/offer). Clone, `npm install`, then `npm start`.
 
 # Requirements and Implementation
 
@@ -63,9 +63,15 @@ I built the frontend with `create-react-app` and stored it in the directory `rea
 
 ## Asynchronously request the data needed for your SPA from your Rails API
 
+This was done using graphql, apollo, and react.
+
 ## Display all offers in a gallery view
 
+All offers were displayed in a two column css view, with a search bar up at the top.
+
 ## Display an individual offer in a detail view
+
+This was the only part of the app I didn't have time to get to.
 
 ## Application is well tested
 
@@ -80,3 +86,5 @@ Initial tests revealed that the rails_helper.rb and Gaurdfile needed to be accou
 I flushed out the existing factories with the Faker gem. Then I created model associations in Offers, Retailers, and RetailerOffers spec. I did this using ShouldaMatchers gem.
 
 ## Provide code in a private git repo (hosted or in an archive)
+
+When the repo was downloaded from the link, the GIT history came attached from past candidates, therefore it still is showing up on Ibotta's side of things. Neverthelesss I was able to detach the front-end and host that privately on my GH.
